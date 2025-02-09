@@ -66,6 +66,7 @@ function desc_from_rows(desc_nodes, empty, maxw, _c)
                 colour = G.C.UI.BACKGROUND_WHITE,
                 r = 0.05,
                 padding = 0.03,
+                minh = 0.8,
                 emboss = not empty and 0.05 or nil
             },
             nodes=t
@@ -77,7 +78,6 @@ function desc_from_rows(desc_nodes, empty, maxw, _c)
         config={
             align = "cm",
             padding = 0.04,
-            minh = 0.8,
             filler = true
         },
         nodes=box
