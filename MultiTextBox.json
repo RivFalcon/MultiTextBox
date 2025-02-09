@@ -1,0 +1,14 @@
+{
+	"id": "MultiTextBox",
+	"name": "Multi Text Box",
+	"display_name": "Multi Text Box",
+	"author": ["Riv_Falcon"],
+	"description": "A Balatro UI mod where you can separate massive description texts into multiple boxes.",
+	"prefix": "MultiTextBox",
+	"main_file": "MultiTextBox.lua",
+	"priority": 0,
+	"badge_colour": "ffffff",
+	"badge_text_colour": "4F6367",
+	"version": "1.0.0",
+	"dependencies": []
+}

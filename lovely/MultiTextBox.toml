@@ -1,0 +1,12 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "desc_from_rows(AUT.main),"
+position = "at"
+match_indent = true
+payload = "desc_from_rows(AUT.main, nil, nil, card),"
