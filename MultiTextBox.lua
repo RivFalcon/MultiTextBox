@@ -12,8 +12,15 @@ function desc_from_rows(desc_nodes, empty, maxw, _c)
     if not _c.discovered then return DFR(desc_nodes, empty, maxw) end
     if type(desc_nodes) ~= 'table' then return DFR(desc_nodes, empty, maxw) end
 
-    local loc_target = G.localization.descriptions[_c.set][_c.key]
-    if loc_target == nil then return DFR(desc_nodes, empty, maxw) end
+    local loc_target = _c.config.center.loc_txt
+    if loc_target == nil then
+        if G.localization == nil then return DFR(desc_nodes, empty, maxw) end
+        if G.localization.descriptions == nil then return DFR(desc_nodes, empty, maxw) end
+        if G.localization.descriptions[_c.set] == nil then return DFR(desc_nodes, empty, maxw) end
+        if G.localization.descriptions[_c.set][_c.key] == nil then return DFR(desc_nodes, empty, maxw) end
+        loc_target = G.localization.descriptions[_c.set][_c.key]
+    end
+
     if type(loc_target.boxes) ~= 'table' then return DFR(desc_nodes, empty, maxw) end
 
     local total_line_numbers = 0
