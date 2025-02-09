@@ -13,6 +13,7 @@ function desc_from_rows(desc_nodes, empty, maxw, _c)
     if _c.ability_UIBox_table.card_type == 'Undiscovered' then return DFR(desc_nodes, empty, maxw) end
     if type(desc_nodes) ~= 'table' then return DFR(desc_nodes, empty, maxw) end
 
+    local loc_target
     if _c.config == nil then return DFR(desc_nodes, empty, maxw) end
     if _c.config.center == nil then return DFR(desc_nodes, empty, maxw) end
     if _c.config.center.loc_txt == nil then
@@ -20,9 +21,9 @@ function desc_from_rows(desc_nodes, empty, maxw, _c)
         if G.localization.descriptions == nil then return DFR(desc_nodes, empty, maxw) end
         if G.localization.descriptions[_c.set] == nil then return DFR(desc_nodes, empty, maxw) end
         if G.localization.descriptions[_c.set][_c.key] == nil then return DFR(desc_nodes, empty, maxw) end
-        local loc_target = G.localization.descriptions[_c.set][_c.key]
+        loc_target = G.localization.descriptions[_c.set][_c.key]
     else
-        local loc_target = _c.config.center.loc_txt
+        loc_target = _c.config.center.loc_txt
     end
 
     if type(loc_target.boxes) ~= 'table' then return DFR(desc_nodes, empty, maxw) end
