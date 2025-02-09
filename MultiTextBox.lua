@@ -12,21 +12,23 @@ function desc_from_rows(desc_nodes, empty, maxw, _c)
     if _c.ability_UIBox_table.card_type == 'Locked' then return DFR(desc_nodes, empty, maxw) end
     if _c.ability_UIBox_table.card_type == 'Undiscovered' then return DFR(desc_nodes, empty, maxw) end
     if type(desc_nodes) ~= 'table' then return DFR(desc_nodes, empty, maxw) end
-    if _c.config.center.loc_txt == nil then return DFR(desc_nodes, empty, maxw) end
-    if type(_c.config.center.loc_txt.boxes) ~= 'table' then return DFR(desc_nodes, empty, maxw) end
+
+    local loc_target = G.localization.descriptions[_c.set][_c.key]
+    if loc_target == nil then return DFR(desc_nodes, empty, maxw) end
+    if type(loc_target.boxes) ~= 'table' then return DFR(desc_nodes, empty, maxw) end
 
     local total_line_numbers = 0
-    for _, box_line_number in ipairs(_c.config.center.loc_txt.boxes) do
+    for _, box_line_number in ipairs(loc_target.boxes) do
         total_line_numbers = total_line_numbers + box_line_number
     end
-    if total_line_numbers ~= #_c.config.center.loc_txt.text then
+    if total_line_numbers ~= #loc_target.text then
         sendDebugMessage("Warning: Sum of ".._c.key..".loc_txt.boxes does not match with #".._c.key..".loc_txt.text!")
         return DFR(desc_nodes, empty, maxw)
     end
 
     local box = {}
     local last_line_number = 0
-    for _, box_line_number in ipairs(_c.config.center.loc_txt.boxes) do
+    for _, box_line_number in ipairs(loc_target.boxes) do
         local t = {}
         for current_subline_number=1, box_line_number do
             t[#t+1] = {
