@@ -9,7 +9,8 @@ SMODS.Atlas({
 local DFR = desc_from_rows
 function desc_from_rows(desc_nodes, empty, maxw, _c)
     if _c == nil then return DFR(desc_nodes, empty, maxw) end
-    if not _c.discovered then return DFR(desc_nodes, empty, maxw) end
+    if _c.ability_UIBox_table.card_type == 'Locked' then return DFR(desc_nodes, empty, maxw) end
+    if _c.ability_UIBox_table.card_type == 'Undiscovered' then return DFR(desc_nodes, empty, maxw) end
     if type(desc_nodes) ~= 'table' then return DFR(desc_nodes, empty, maxw) end
 
     local loc_target = _c.config.center.loc_txt
