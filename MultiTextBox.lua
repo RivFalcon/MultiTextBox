@@ -38,11 +38,11 @@ function desc_from_rows(desc_nodes, empty, maxw, _c)
         end
     end
     if not box_contains_only_numbers then
-        sendDebugMessage("Warning: .boxes contains non-number value! Card.key = ".._c.key)
+        sendDebugMessage("Warning: .boxes contains non-number value! Card.key = "..(_c.key or _c.config.center.key))
         return DFR(desc_nodes, empty, maxw)
     end
     if total_line_numbers ~= #loc_target.text then
-        sendDebugMessage("Warning: Sum of .boxes does not match with the total number of lines in .text! Card.key = ".._c.key)
+        sendDebugMessage("Warning: Sum of .boxes does not match with the total number of lines in .text! Card.key = "..(_c.key or _c.config.center.key))
         return DFR(desc_nodes, empty, maxw)
     end
 
