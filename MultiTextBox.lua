@@ -66,7 +66,7 @@ function desc_from_rows(desc_nodes, empty, maxw, _c)
                 colour = G.C.UI.BACKGROUND_WHITE,
                 r = 0.05,
                 padding = 0.03,
-                minh = 0.8,
+                minh = ((box_line_number<=1)and 0.5) or 0.8,
                 emboss = not empty and 0.05 or nil
             },
             nodes=t
